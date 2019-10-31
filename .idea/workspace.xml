@@ -18,11 +18,15 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1RgHw8xUtQSAj9BpYRnfN7KnDpt" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../REACT/tentti/react_tentti" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -39,6 +43,20 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager" selected="Node.js.leffaServer.js">
+    <configuration name="leffaServer.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/back/leffaServer.js" working-dir="$PROJECT_DIR$/back">
+      <method v="2" />
+    </configuration>
+    <configuration name="luoLeffat.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/back/luoLeffat.js" working-dir="$PROJECT_DIR$/back">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.leffaServer.js" />
+        <item itemvalue="Node.js.luoLeffat.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -58,11 +76,27 @@
       <workItem from="1571808621121" duration="3954000" />
       <workItem from="1571914632640" duration="615000" />
       <workItem from="1572246239893" duration="601000" />
-      <workItem from="1572344821397" duration="621000" />
+      <workItem from="1572344821397" duration="623000" />
+      <workItem from="1572523194785" duration="2869000" />
+      <workItem from="1572531014775" duration="667000" />
+      <workItem from="1572531906026" duration="394000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
