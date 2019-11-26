@@ -7,6 +7,7 @@ db.serialize(function() {
         "id integer PRIMARY KEY NOT NULL, " +
         "nimi text NOT NULL, " +
         "arvosteltu date NOT NULL, " +
+        "posteri text, " +
         "traileri text NOT NULL, " +
         "ohjaaja text NOT NULL, " +
         "vuosi integer, " +
@@ -19,8 +20,8 @@ db.serialize(function() {
         console.log("Taulu tehtiin");
     });
 
-    sql = "INSERT INTO `leffa` (`id`, `nimi`, `arvosteltu`, `traileri`, `ohjaaja`, `vuosi`, `arvosana`) "+
-        " VALUES (1, 'Star Wars', '2019-03-10', 'https://www.youtube.com/watch?v=1g3_CFmnU7k', 'George Lucas', 1977, 10)";
+    sql = "INSERT INTO `leffa` (`id`, `nimi`, `arvosteltu`, `posteri`, `traileri`, `ohjaaja`, `vuosi`, `arvosana`) "+
+        " VALUES (1, 'Star Wars', '2019-03-10', 'starwars.jpg', 'https://www.youtube.com/watch?v=1g3_CFmnU7k', 'George Lucas', 1977, 10)";
     db.run(sql, (err) => {
         if (err) {
             return console.log(err.message);
@@ -28,8 +29,8 @@ db.serialize(function() {
         console.log("Rivi lisättiin");
     });
 
-    sql = "INSERT INTO `leffa` (`id`, `nimi`, `arvosteltu`, `traileri`, `ohjaaja`, `vuosi`, `arvosana`) "+
-        " VALUES (2, 'Pulp Fiction', '2019-03-10', 'https://www.youtube.com/watch?v=s7EdQ4FqbhY', 'Quentin Tarantino', 1994, 10)";
+    sql = "INSERT INTO `leffa` (`id`, `nimi`, `arvosteltu`, `posteri`, `traileri`, `ohjaaja`, `vuosi`, `arvosana`) "+
+        " VALUES (2, 'Pulp Fiction', '2019-03-10', 'pulp.jpg', 'https://www.youtube.com/watch?v=s7EdQ4FqbhY', 'Quentin Tarantino', 1994, 10)";
     db.run(sql, (err) => {
         if (err) {
             return console.log(err.message);

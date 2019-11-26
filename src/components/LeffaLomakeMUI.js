@@ -10,7 +10,12 @@ import FormControl from '@material-ui/core/FormControl';
 import { makeStyles } from '@material-ui/core/styles';
 import '../App.css';
 import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
+import AttachmentIcon from '@material-ui/icons/Attachment';
+import Input from '@material-ui/core/Input';
+import axios from 'axios';
+import Typography from '@material-ui/core/Typography';
+import moment from 'moment';
+import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles(theme => ({
 
@@ -25,14 +30,17 @@ function LeffaLomakeMUI() {
     const [leffa, setValues] = useState({
         id: '',
         nimi: '',
-        arvosteltu: new Date(),
+        arvosteltu: moment(new Date()).format("YYYY-DD-MM"),
         traileri:'',
+        posteri: '',
         ohjaaja: '',
         vuosi: '',
         arvosana: ''
     });
+    const [viesti, setViesti] = useState('');
 
     const muuta = (e) => {
+        setViesti('');
         setValues( {
             ...leffa, [e.target.name]: e.target.value
         });
@@ -40,27 +48,43 @@ function LeffaLomakeMUI() {
     }
 
     const muutaSuurella = (e) => {
+        setViesti('');
         setValues( {
             ...leffa, [e.target.name]: e.target.value.toUpperCase()
         });
 
     }
 
-
-
-
-
-    const muutaPaiva = (date) => {
-        setValues(
-            {
-                ...leffa,
-                paiva: date
+    const muutaKuva = (e) => {
+        setViesti('');
+        setValues({
+                ...leffa, [e.target.name]: e.target.files[0]
             });
+        console.log(e.target.files[0])
+
     }
+
+
 
     const lisaaLeffa = (e) => {
         e.preventDefault();
-
+        const formData = new FormData();
+        formData.append('nimi', leffa.nimi);
+        formData.append('arvosteltu', leffa.arvosteltu);
+        formData.append('posteri', leffa.posteri);
+        formData.append('traileri', leffa.traileri);
+        formData.append('ohjaaja', leffa.ohjaaja);
+        formData.append('vuosi', leffa.vuosi);
+        formData.append('arvosana', leffa.arvosana);
+        axios.post('http://localhost:8080/leffa/add', formData)
+            .then(response => {
+                if (response.status === 200) {
+                    setValues( {nimi: '', arvosteltu: new Date(), posteri: [], traileri: '', ohjaaja: '', vuosi:'', arvosana:'' } );
+                    setViesti('Lisättiin');
+                } else {
+                    setViesti('Lisäys ei onnistunut');
+                }
+            })
     }
     const handleClose = () => {
         setOpen(false);
@@ -76,7 +100,8 @@ function LeffaLomakeMUI() {
             {
                 id: '',
                 nimi: '',
-                arvosteltu: new Date(),
+                arvosteltu: moment(new Date()).format("YYYY-DD-MM"),
+                posteri: '',
                 traileri:'',
                 ohjaaja: '',
                 vuosi: '',
@@ -88,19 +113,30 @@ function LeffaLomakeMUI() {
     const [open, setOpen] = React.useState(false);
     const classes = useStyles();
 
+    let kuvaNimi='';
+    if (leffa.posteri !== null){
+        kuvaNimi = leffa.posteri.name;
+    }
+
     return (
         <Grid container justify="center">
-    <Card style={{fullWidth: true, marginTop: 200}}>
+    <Paper style={{fullWidth: true, marginTop: 200}}>
         <form style={{width: 500}} >
             <TextField label='Nimi' name='nimi' id='nimi' value={leffa.nimi} margin='normal' required fullWidth='true' onChange={ e => muutaSuurella(e) } />
-
-            <FormControl name='arvosteltu' type='hidden'  required value={leffa.arvosteltu} onChange={muutaPaiva} format='dd.MM.yyyy' />
 
             <TextField label='Trailerin Youtube-linkki' name='traileri' id='traileri' value={leffa.traileri} margin='normal' required fullWidth='true' onChange={ e => muuta(e) } />
 
             <TextField label='Ohjaaja' name='ohjaaja' id='ohjaaja' value={leffa.ohjaaja} margin='normal' required fullWidth='true' onChange={ e => muuta(e) } />
 
             <TextField label='Vuosi' name='vuosi' id='vuosi' value={leffa.vuosi} margin='normal' required fullWidth='true' onChange={ e => muuta(e) } />
+
+            <Input accept='image/*' name='posteri' id='poster' type='file' style={{display: 'none'}} onChange={muutaKuva}/>
+            <InputLabel htmlFor='poster'>
+                Kuva
+                <Button component='span' color='primary'><AttachmentIcon /></Button>
+                { kuvaNimi }
+            </InputLabel>
+
         <FormControl className={classes.formControl}>
             <InputLabel htmlFor='arvio'>Arvosana</InputLabel>
             <Select
@@ -127,6 +163,7 @@ function LeffaLomakeMUI() {
                 <MenuItem value={9}>9/10</MenuItem>
                 <MenuItem value={10}>10/10</MenuItem>
             </Select>
+
         </FormControl>
             <br />
             <br />
@@ -136,7 +173,8 @@ function LeffaLomakeMUI() {
             <Button variant='contained' color='secondary' onClick={e => tyhjenna(e)}><ClearIcon />Tyhjennä</Button>
 
         </form>
-    </Card>
+        <Typography>{ viesti }</Typography>
+    </Paper>
         </Grid>
 
 

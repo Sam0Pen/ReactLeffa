@@ -26,11 +26,18 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="js.last.introduce.type" value="CONST" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../REACT/uusi/react_tunnilla" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2019.2.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\zamfa\Desktop\reactharjoitus\leffat\back\uploads" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -79,7 +86,15 @@
       <workItem from="1572344821397" duration="623000" />
       <workItem from="1572523194785" duration="2869000" />
       <workItem from="1572531014775" duration="667000" />
-      <workItem from="1572531906026" duration="394000" />
+      <workItem from="1572531906026" duration="520000" />
+      <workItem from="1574075344610" duration="978000" />
+      <workItem from="1574317868141" duration="1788000" />
+      <workItem from="1574319695088" duration="6649000" />
+      <workItem from="1574329092230" duration="20751000" />
+      <workItem from="1574423780726" duration="20986000" />
+      <workItem from="1574676212850" duration="6435000" />
+      <workItem from="1574751608251" duration="10000" />
+      <workItem from="1574757011511" duration="198000" />
     </task>
     <servers />
   </component>

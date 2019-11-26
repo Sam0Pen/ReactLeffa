@@ -10,7 +10,6 @@ import CreateIcon from '@material-ui/icons/Create';
 import MenuIcon from '@material-ui/icons/Menu';
 import ListItemText from '@material-ui/core/ListItemText';
 import MenuList from '@material-ui/core/MenuList';
-import PersonIcon from '@material-ui/icons/Person';
 import { Link } from 'react-router-dom';
 
 function MenuMUI () {
@@ -29,9 +28,7 @@ function MenuMUI () {
             <MenuItem component={ Link } to='/lisaa' onClick={handleClose}><CreateIcon />
                 <ListItemText insert primary ='Lisää' />
             </MenuItem>
-            <MenuItem onClick={handleClose}><PersonIcon />
-                <ListItemText insert primary ='Kirjaudu sisään' />
-            </MenuItem>
+
         </ Menu>
     </MenuList>
 

@@ -40,24 +40,46 @@ app.get('/leffa/one/:id', (req, res, next) => {
     });
 })
 
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: (req, file, callback) => {
+        callback(null, './uploads')
+    },
+    filename: (req, file, callback) => {
+        callback(null, file.originalname)
+    }
+})
+
+const upload = multer({ storage: storage })
 
 
-app.post('/leffa/add'), (req, res, next) => {
+
+app.post('/leffa/add',  upload.single('posteri'), (req, res, next) => {
     let leffa = req.body;
-    db.run('INSERT INTO leffa (nimi, arvosteltu, traileri, ohjaaja, vuosi, arvosana) VALUES (?, ?, ?, ?, ?, ?)',
-        [leffa.nimi, leffa.arvosteltu, leffa.traileri, leffa.ohjaaja, leffa.vuosi, leffa.arvosana], (error, result, field) => {
+    let posteri = null;
+    if (req.file) {
+        posteri = req.file.originalname;
+    }
+    db.run('INSERT INTO leffa (nimi, arvosteltu, posteri, traileri, ohjaaja, vuosi, arvosana) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        [leffa.nimi, leffa.arvosteltu, posteri, leffa.traileri, leffa.ohjaaja, leffa.vuosi, leffa.arvosana], (error, result, field) => {
             if (error) throw error;
 
             return res.status(200).json({count: 1});
         });
 
-}
+})
 
-app.post('/leffa/edit/:id'), (req, res, next) => {
+app.post('/leffa/edit/:id', upload.single('posteri'), (req, res, next) => {
     let id = req.params.id;
     let leffa = req.body;
 
-}
+})
+
+app.get('/download/:nimi', (req, res, next) => {
+    var file = './uploads/' + req.params.nimi;
+    res.download(file);
+});
 
 
 
